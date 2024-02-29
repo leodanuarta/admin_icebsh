@@ -1,6 +1,20 @@
 <?php
     $title = "Dashboard";
-    include_once('./props/header.php');
+    include './props/header.php';
+
+    // include '../../database/conn.php';
+    $host = "127.0.0.1";
+    $user = "root";
+    $pass = "";
+    $db = "icebsh";
+    $conn = mysqli_connect($host,$user,$pass,$db);
+
+    $qry = "SELECT * FROM m_info";
+    $data = mysqli_query($conn, $qry);
+    $result = mysqli_fetch_array($data);
+
+    mysqli_close($conn);
+
 ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -340,7 +354,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; <?php echo $result['nama'] ?> <?php echo date("Y"); ?></span>
                     </div>
                 </div>
             </footer>

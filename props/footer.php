@@ -1,8 +1,25 @@
-              <!-- Footer -->
+<?php
+    include '../database/conn.php';
+    // $host = "127.0.0.1";
+    // $user = "root";
+    // $pass = "";
+    // $db = "icebsh";
+    // $conn = mysqli_connect($host,$user,$pass,$db);
+
+    $qry = "SELECT * FROM m_info";
+    $data = mysqli_query($conn, $qry);
+    $result = mysqli_fetch_array($data);
+
+    mysqli_close($conn);
+?>
+     </div>
+            <!-- End of Main Content -->
+            
+        <!-- Footer -->
               <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Admin Icaste Website <?php echo date("Y"); ?></span>
+                        <span>Copyright &copy; Admin <?php echo $result['nama'] ?> <?php echo date("Y"); ?></span>
                     </div>
                 </div>
             </footer>
