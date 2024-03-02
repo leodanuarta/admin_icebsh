@@ -11,9 +11,9 @@
 ?>
 
                 <!-- Begin Page Content -->
-                <form action="./props/settingAction.php" method="post" enctype="multipart/form-data">
+                <form action="./props/settingAction.php" method="POST" enctype="multipart/form-data">
                     <div class="container-fluid">
-                        <h1>Website Name : </h1>
+                        <h1>Website Name :</h1>
                         <input type="text" maxlength="20" name="nama" value="<?php echo $result['nama'] ?>">
                         <input type="submit" name="updateNama" value="Simpan">
 

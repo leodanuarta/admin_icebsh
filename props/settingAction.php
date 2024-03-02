@@ -2,26 +2,27 @@
     include '../database/conn.php';
 
     // untuk mencari tau apa kah button sudah ditekan apa belom 'nama' nama button
-    if($_POST['nama']){
+    if(isset($_POST['nama'])){
         $nama = $_POST['nama'];
         $query = mysqli_query($conn, "UPDATE m_info SET nama = '$nama'");
             if($query){
                 echo 'FILE BERHASIL DI UPLOAD';
                 mysqli_close($conn);
                 header("location:../setting.php");
+                die();
             }else{
                 echo 'GAGAL MENGUPLOAD GAMBAR';
             }
     }
 
     // untuk mencari tau apa kah button sudah ditekan apa belom 'uploadHeader' nama button
-    if($_POST['uploadHeader']){
+    if(isset($_POST['uploadHeader'])){
         $ekstensi_diperbolehkan = array('png','jpg', 'jpeg');
         $nama = $_FILES['fileHeader']['name'];
         $x = explode('.', $nama);
         $ekstensi = strtolower(end($x));
-        $ukuran = $_FILES['file']['size'];
-        $file_tmp = $_FILES['file']['tmp_name'];
+        $ukuran = $_FILES['fileHeader']['size'];
+        $file_tmp = $_FILES['fileHeader']['tmp_name'];
         
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
             if($ukuran < 3044070){
@@ -33,9 +34,10 @@
                 
                 $query = mysqli_query($conn, "UPDATE m_info SET img_header = '/img/$nama' ");
                 if($query){
-                    mysqli_close($conn);
                     echo 'GAMBAR HEADER BERHASIL DI UPLOAD';
+                    mysqli_close($conn);
                     header("location:../setting.php");
+                    die();
                 }else{
                     echo 'GAGAL MENGUPLOAD GAMBAR HEADER';
                 }
@@ -48,16 +50,16 @@
     }
 
     // untuk mencari tau apa kah button sudah ditekan apa belom 'uploadFooter' nama button
-    if($_POST['uploadFooter']){
+    if(isset($_POST['uploadFooter'])){
         $ekstensi_diperbolehkan = array('png','jpg', 'jpeg');
         $nama = $_FILES['fileFooter']['name'];
         $x = explode('.', $nama);
         $ekstensi = strtolower(end($x));
-        $ukuran = $_FILES['file']['size'];
-        $file_tmp = $_FILES['file']['tmp_name']; 
+        $ukuran = $_FILES['fileFooter']['size'];
+        $file_tmp = $_FILES['fileFooter']['tmp_name'];
         
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-            if($ukuran < 3044070){ 
+            if($ukuran < 3044070){
                 move_uploaded_file($file_tmp, '../../img/'.$nama);
                 $query = mysqli_query($conn, "UPDATE m_info SET img_footer = '/img/$nama' ");
                 if($query){
