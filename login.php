@@ -1,3 +1,31 @@
+<?php
+    include './database/conn.php';
+    
+    session_start();
+    
+    if (isset($_SESSION['email'])) {
+        header("Location: login.php");
+        die();
+    }
+    
+    if (isset($_POST['submit'])) {
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = hash('sha256', $_POST['password']); // Hash the input password using SHA-256
+    
+        $sql = "SELECT * FROM m_user WHERE email='$email' AND password='$password'";
+        $result = mysqli_query($conn, $sql);
+    
+        if ($result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['username'] = $row['nama'];
+            header("Location: index.php");
+            die();
+        } else {
+            echo "<script>alert('Email atau password Anda salah. Silakan coba lagi!')</script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,19 +69,22 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="POST" action="">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="exampleInputEmail" aria-describedby="emailHelp" name="email"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" class="form-control form-control-user" name="password"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
-                                        <a href="index.php" class="btn btn-primary btn-user btn-block">
+                                        <!-- <a href="index.php" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </a> -->
+                                        <div class="input-group">
+                                            <button name="submit" class="btn">Login</button>
+                                        </div>
                                     </form>
                                     <hr>
                                     <div class="text-center">

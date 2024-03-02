@@ -1,4 +1,11 @@
 <?php
+    session_start();
+    
+    if (!isset($_SESSION['email'])) {
+        header("Location: login.php");
+        die();
+    }
+    
     include '../database/conn.php';
     // $host = "127.0.0.1";
     // $user = "root";
@@ -184,7 +191,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'] ?></span>
                             <img class="img-profile rounded-circle"
                                 src="img/undraw_profile.svg">
                         </a>

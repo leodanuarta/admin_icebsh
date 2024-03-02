@@ -1,3 +1,36 @@
+<?php
+    include './database/conn.php';
+    if (isset($_POST['submit'])) {
+        // $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = hash('sha256', $_POST['password']); // Hash the input password using SHA-256
+        $cpassword = hash('sha256', $_POST['password']); // Hash the input confirm password using SHA-256
+     
+        if ($password == $cpassword) {
+            $sql = "SELECT * FROM m_user WHERE email='$email'";
+            $result = mysqli_query($conn, $sql);
+            if (!$result->num_rows > 0) {
+                $sql = "INSERT INTO m_user (email, password)
+                        VALUES ('$email', '$password')";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>alert('Selamat, registrasi berhasil!')</script>";
+                    $username = "";
+                    $email = "";
+                    $_POST['password'] = "";
+                    $_POST['cpassword'] = "";
+                } else {
+                    echo "<script>alert('Woops! Terjadi kesalahan.')</script>";
+                }
+            } else {
+                echo "<script>alert('Woops! Email Sudah Terdaftar.')</script>";
+            }
+        } else {
+            echo "<script>alert('Password Tidak Sesuai')</script>";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +69,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" method="POST" action="">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
@@ -48,12 +81,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email"
                                         placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user" name="password"
                                             id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
@@ -61,9 +94,9 @@
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <div class="input-group">
+                                    <button name="submit" class="btn">Register</button>
+                                </div>
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
