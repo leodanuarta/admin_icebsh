@@ -26,7 +26,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN -<?php echo $result['nama'] ?></title>
+    <title>ADMIN - <?php echo $result['nama'] ?></title>
     <link rel="icon" type="image/x-icon" href="../<?php echo $result['img_header'] ?>">
 
     <!-- Custom fonts for this template-->

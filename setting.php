@@ -11,24 +11,28 @@
 ?>
 
                 <!-- Begin Page Content -->
-                <form action="./props/settingAction.php" method="POST" enctype="multipart/form-data">
+                <!-- <form action="./props/settingAction.php" method="POST" enctype="multipart/form-data"> -->
                     <div class="container-fluid">
-                        <h1>Website Name :</h1>
-                        <input type="text" maxlength="20" name="nama" value="<?php echo $result['nama'] ?>">
-                        <input type="submit" name="updateNama" value="Simpan">
 
-                        <h1>Upload Gambar logo header</h1>
-                        <input type="file" name="fileHeader">
-                        <input type="submit" name="uploadHeader" value="Upload">
-                        <img src="../<?php echo $result['img_header'] ?>" alt="" width="500" height="600">
+                        <form action="./props/settingAction.php" method="POST" enctype="multipart/form-data">
+                            <h1>Website Name :</h1>
+                            <input type="text" maxlength="20" name="nama" value="<?php echo $result['nama'] ?>">
+                            <input type="submit" name="updateNama" value="Simpan">
+                        </form>
                         
-                        <h1>Upload Gambar logo footer</h1>
-                        <input type="file" name="fileFooter">
-                        <input type="submit" name="uploadFooter" value="Upload">
-                        <img src="../<?php echo $result['img_footer'] ?>" alt="" width="500" height="600">
+                        <form action="./props/uploadSettingAction.php" method="POST" enctype="multipart/form-data">
+                            <h1>Upload Gambar logo header</h1>
+                            <input type="file" name="fileHeader">
+                            <input type="submit" name="uploadHeader" value="Upload">
+                            <img src="../<?php echo $result['img_header'] ?>" alt="" width="500" height="600">
+
+                            <h1>Upload Gambar logo footer</h1>
+                            <input type="file" name="fileFooter">
+                            <input type="submit" name="uploadFooter" value="Upload">
+                            <img src="../<?php echo $result['img_footer'] ?>" alt="" width="500" height="600">
+                        </form>
                     </div>
-                </form>
-                <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
