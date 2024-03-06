@@ -86,8 +86,7 @@
                         <a class="collapse-item" href="setSubmission.php">Submission</a>
                         <a class="collapse-item" href="setCommittee.php">Committee</a>
                         <a class="collapse-item" href="setContact.php">Contact</a>
-                        <!-- <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.php">Login</a> -->
+                        <!-- <a class="collapse-item" href="login.php">Login</a> -->
                         <!-- <a class="collapse-item" href="register.php">Register</a> -->
                         <!-- <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
                         <div class="collapse-divider"></div>
