@@ -2,12 +2,7 @@
     $title = "Dashboard";
     include './props/header.php';
 
-    // include '../../database/conn.php';
-    $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $db = "icebsh";
-    $conn = mysqli_connect($host,$user,$pass,$db);
+    include '../database/conn.php';
 
     $qry = "SELECT * FROM m_info";
     $data = mysqli_query($conn, $qry);
@@ -47,7 +42,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <form action="./props/logoutAction.php" method="POST">
+    <form action="props/logoutAction.php" method="POST">
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -61,7 +56,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-warning" type="button" name="logout" data-dismiss="modal">Logout</button>
+                        <button class="btn btn-warning" type="submit" name="logout">Logout</button>
                     </div>
                 </div>
             </div>

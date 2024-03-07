@@ -2,10 +2,10 @@
     session_start();
     
     if (!isset($_SESSION['email'])) {
-        header("Location: login.php");
+        header("Location: ../admin_icebsh/login.php");
         die();
     }
-    
+
     include '../database/conn.php';
 
     $qry = "SELECT * FROM m_info";
