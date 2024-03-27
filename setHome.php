@@ -35,7 +35,7 @@
 
             
             <!-- Collapsable Card -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4" visible="false">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse"
                     role="button" aria-expanded="true" aria-controls="collapseCardExample">
@@ -98,6 +98,7 @@
             </div>
 
         </div>
+
         <!-- /.container-fluid -->
     </div>
 
@@ -121,6 +122,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Upload Gambar Slider</label>
+                        <p class="" style="font-size: 16px; color: red;">Ukuran Gambar Width: 1920px dan Height: 1080px</p>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" name="fileTambahGambar" accept="image/*" required>
                     </div>
                 </div>
