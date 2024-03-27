@@ -35,7 +35,7 @@
 
             
             <!-- Collapsable Card -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4" visible="false">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse"
                     role="button" aria-expanded="true" aria-controls="collapseCardExample">
@@ -98,6 +98,12 @@
             </div>
 
         </div>
+
+        <?php
+            // Bebaskan hasil query
+            mysqli_free_result($data_img);
+        ?>
+
         <!-- /.container-fluid -->
     </div>
 

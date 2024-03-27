@@ -13,6 +13,7 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Admin <?php echo $result['nama'] ?> - Universitas Tarumanagara <?php echo date("Y"); ?></span>
+                        <span>Copyright &copy; Admin <?php echo $result['nama'] ?> - Universitas Tarumanagara <?php echo date("Y"); ?></span>
                     </div>
                 </div>
             </footer>
@@ -49,6 +50,7 @@
                 </div>
             </div>
         </div>
+    </form>
     </form>
 
     <!-- Bootstrap core JavaScript-->

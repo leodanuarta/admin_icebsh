@@ -2,12 +2,7 @@
     $title = "Dashboard";
     include './props/header.php';
 
-    // include '../../database/conn.php';
-    $host = "127.0.0.1";
-$user = "root";
- $pass = "";
- $db = "admice_icebsh_new";
-    $conn = mysqli_connect($host,$user,$pass,$db);
+    include '../database/conn.php';
 
     $qry = "SELECT * FROM m_info";
     $data = mysqli_query($conn, $qry);
@@ -47,7 +42,7 @@ $user = "root";
     </a>
 
     <!-- Logout Modal-->
-    <form action="./props/logoutAction.php" method="POST">
+    <form action="props/logoutAction.php" method="POST">
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

@@ -2,12 +2,16 @@
     session_start();
     
     if (!isset($_SESSION['email'])) {
-        header("Location: ../admin_icebsh/login.php");
-        header("Location: ../admin_icebsh/login.php");
+        header("Location: login.php");
         die();
     }
-
+    
     include '../database/conn.php';
+    // $host = "127.0.0.1";
+    // $user = "root";
+    // $pass = "";
+    // $db = "icebsh";
+    $conn = mysqli_connect($host,$user,$pass,$db);
 
     $qry = "SELECT * FROM m_info";
     $data = mysqli_query($conn, $qry);
@@ -27,7 +31,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN - <?php echo $result['nama'] ?></title>
+    <title>ADMIN -<?php echo $result['nama'] ?></title>
     <link rel="icon" type="image/x-icon" href="../<?php echo $result['img_header'] ?>">
 
     <!-- Custom fonts for this template-->
@@ -38,9 +42,6 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- sweet alert -->
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
 </head>
 
@@ -110,8 +111,53 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="setting.php">Setting Website </a>
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="buttons.php">Buttons</a>
+                        <a class="collapse-item" href="cards.php">Cards</a>
                     </div>
                 </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Utilities</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <a class="collapse-item" href="utilities-color.php">Colors</a>
+                        <a class="collapse-item" href="utilities-border.php">Borders</a>
+                        <a class="collapse-item" href="utilities-animation.php">Animations</a>
+                        <a class="collapse-item" href="utilities-other.php">Other</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->
