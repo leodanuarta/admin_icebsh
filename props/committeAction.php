@@ -1,12 +1,13 @@
 <?php
     include '../database/conn.php';
+    session_start();
 
     if(isset($_POST['InputCommittee'])){
         $payload = $_POST['inputCommittee'];
         $query = mysqli_query($conn, "UPDATE m_committee SET txt_committee = '$payload' WHERE id = 1");
             if($query){
-                echo 'TEXT BERHASIL DI UPDATE';
-                header("location:../setCommittee.php");
+                // leo danuarta
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setCommittee.php";</script>';
             }else{
                 echo 'GAGAL MENGUPLOAD TEXT';
             }
@@ -17,8 +18,7 @@
         $payload = $_POST['inputReviewers'];
         $query = mysqli_query($conn, "UPDATE m_committee SET txt_reviewers = '$payload' WHERE id = 1");
             if($query){
-                echo 'TEXT BERHASIL DI UPDATE';
-                header("location:../setCommittee.php");
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setCommittee.php";</script>';
             }else{
                 echo 'GAGAL MENGUPLOAD TEXT';
             }

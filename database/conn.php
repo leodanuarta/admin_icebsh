@@ -1,8 +1,8 @@
 <?php
     $host = "127.0.0.1";
-    $user = "root";
-    $pass = "";
-    $db = "icebsh";
+   $user = "root";
+ $pass = "";
+ $db = "admice_icebsh_new";
     $conn = mysqli_connect($host,$user,$pass,$db);
 
     // Periksa koneksi

@@ -4,8 +4,8 @@
         $payload = $_POST['inputSubmission'];
         $query = mysqli_query($conn, "UPDATE m_submission SET txt_submission = '$payload' WHERE id = 1");
             if($query){
-                echo 'FILE BERHASIL DI UPLOAD';
-                header("location:../setSubmission.php");
+                // leo danuarta
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setSubmission.php";</script>';
             }else{
                 echo 'GAGAL MENGUPLOAD TEXT';
             }

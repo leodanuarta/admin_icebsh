@@ -5,9 +5,9 @@
     $qry = "SELECT * FROM m_callforpaper WHERE id = 1";
     $data = mysqli_query($conn, $qry);
     $result = mysqli_fetch_array($data);
+
     mysqli_close($conn);
     
-    include('./props/richText.php');
 ?>
 
         <!-- Begin Page Content -->
@@ -23,9 +23,13 @@
                 <div class="collapse show" id="collapseCardExample">
                     <div class="card-body">
                         <form action="./props/copAction.php" method="POST">
-                            <textarea name="inputCOP">
-                                <?php echo $result['txt_cop'] ?>
+                            <textarea id="editor" name="inputCOP">
                             </textarea>
+                            <br>
+                            <!-- <textarea style="width: auto;" name="inputCOP" id="editor" class="quill-editor">
+                                <?php echo $result['txt_cop'] ?>
+                            </textarea> -->
+                            <br>
                             <input type="submit" name="InputCOP" value="Simpan">
                         </form>
                     </div>
@@ -33,9 +37,12 @@
             </div>
         </div>
         <!-- /.container-fluid -->
+
     </div>
     <!-- End of Main Content -->
 
 <?php
     include_once('./props/footer.php');
+    include('./props/richText.php');
+
 ?>

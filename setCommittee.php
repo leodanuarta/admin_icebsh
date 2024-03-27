@@ -2,9 +2,11 @@
     $title = "Not Found";
     include_once('./props/header.php');
     include './database/conn.php';
+
     $qry = "SELECT * FROM m_committee WHERE id = 1";
     $data = mysqli_query($conn, $qry);
     $result = mysqli_fetch_array($data);
+
     mysqli_close($conn);
     
     include('./props/richText.php');
@@ -22,7 +24,7 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardExample">
                     <div class="card-body">
-                        <form action="./props/committeAction.php" method="POST">
+                        <form action="props/committeAction.php" method="POST">
                             <textarea name="inputCommittee">
                                 <?php echo $result['txt_committee'] ?>
                             </textarea>
@@ -51,11 +53,12 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- /.container-fluid -->
     </div>
     <!-- End of Main Content -->
 
 <?php
-    include_once('./props/footer.php');
+    include_once('props/footer.php');
 ?>

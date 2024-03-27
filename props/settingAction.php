@@ -6,74 +6,52 @@
         $nama = $_POST['nama'];
         $query = mysqli_query($conn, "UPDATE m_info SET nama = '$nama'");
             if($query){
-                echo 'FILE BERHASIL DI UPLOAD';
                 mysqli_close($conn);
-                header("location:../setting.php");
+                // leo danuarta
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setting.php";</script>';
                 die();
             }else{
                 echo 'GAGAL MENGUPLOAD GAMBAR';
             }
     }
 
-    // untuk mencari tau apa kah button sudah ditekan apa belom 'uploadHeader' nama button
-    if(isset($_POST['uploadHeader'])){
-        $ekstensi_diperbolehkan = array('png','jpg', 'jpeg');
-        $nama = $_FILES['fileHeader']['name'];
-        $x = explode('.', $nama);
-        $ekstensi = strtolower(end($x));
-        $ukuran = $_FILES['fileHeader']['size'];
-        $file_tmp = $_FILES['fileHeader']['tmp_name'];
-        
-        if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-            if($ukuran < 3044070){
-                if (move_uploaded_file($file_tmp, '../../img/'.$nama)) {
-                    echo "<h3>  Image uploaded successfully!</h3>";
-                } else {
-                    echo "<h3>  Failed to upload image!</h3>";
-                }
-                
-                $query = mysqli_query($conn, "UPDATE m_info SET img_header = '/img/$nama' ");
-                if($query){
-                    echo 'GAMBAR HEADER BERHASIL DI UPLOAD';
-                    mysqli_close($conn);
-                    header("location:../setting.php");
-                    die();
-                }else{
-                    echo 'GAGAL MENGUPLOAD GAMBAR HEADER';
-                }
+    if(isset($_POST['InputTxtFooter1'])){
+        $txt_footer1 = $_POST['inputTxtFooter1'];
+        $query = mysqli_query($conn, "UPDATE m_info SET txt_img_footer1 = '$txt_footer1'");
+            if($query){
+                mysqli_close($conn);
+                // leo danuarta
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setting.php";</script>';
+                die();
             }else{
-                echo 'UKURAN GAMBAR HEADER TERLALU BESAR';
+                echo 'GAGAL MENGUPLOAD GAMBAR';
             }
-        }else{
-            echo 'EKSTENSI GAMBAR HEADER YANG DI UPLOAD TIDAK DI PERBOLEHKAN DIPERBOLEHKAN HANYA "JPG, "JPEG" DAN "PNG"';
-        }
     }
 
-    // untuk mencari tau apa kah button sudah ditekan apa belom 'uploadFooter' nama button
-    if(isset($_POST['uploadFooter'])){
-        $ekstensi_diperbolehkan = array('png','jpg', 'jpeg');
-        $nama = $_FILES['fileFooter']['name'];
-        $x = explode('.', $nama);
-        $ekstensi = strtolower(end($x));
-        $ukuran = $_FILES['fileFooter']['size'];
-        $file_tmp = $_FILES['fileFooter']['tmp_name'];
-        
-        if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-            if($ukuran < 3044070){
-                move_uploaded_file($file_tmp, '../../img/'.$nama);
-                $query = mysqli_query($conn, "UPDATE m_info SET img_footer = '/img/$nama' ");
-                if($query){
-                    echo 'GAMBAR FOOTER BERHASIL DI UPLOAD';
-                    mysqli_close($conn);
-                    header("location:../setting.php");
-                }else{
-                    echo 'GAGAL MENGUPLOAD GAMBAR FOOTER';
-                }
+    if(isset($_POST['InputTxtFooter2'])){
+        $txt_footer2 = $_POST['inputTxtFooter2'];
+        $query = mysqli_query($conn, "UPDATE m_info SET txt_img_footer2 = '$txt_footer2'");
+            if($query){
+                mysqli_close($conn);
+                // leo danuarta
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setting.php";</script>';
+                die();
             }else{
-                echo 'UKURAN GAMBAR FOOTER TERLALU BESAR';
+                echo 'GAGAL MENGUPLOAD GAMBAR';
             }
-        }else{
-            echo 'EKSTENSI GAMBAR FOOTER YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
-        }
     }
- ?>
+
+    if(isset($_POST['InputTxtFooter3'])){
+        $txt_footer3 = $_POST['inputTxtFooter3'];
+        $query = mysqli_query($conn, "UPDATE m_info SET txt_img_footer3 = '$txt_footer3'");
+            if($query){
+                mysqli_close($conn);
+                // leo danuarta
+                echo '<script>alert("Berhasil Mengupload Text");window.location.href = "../setting.php";</script>';
+                die();
+            }else{
+                echo 'GAGAL MENGUPLOAD GAMBAR';
+            }
+    }
+
+?>
